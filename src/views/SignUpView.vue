@@ -1,15 +1,18 @@
 <script setup>
 import {useRouter} from "vue-router";
 import {ref} from "vue";
+import serverUrlService from "../service/urlService.js";
 
 const router = useRouter();
 const username = ref("");
 const password = ref("");
 const errorMessage = ref("");
+const serverUrl = serverUrlService.getApplicationServerUrl();
+
 
 const login = async () => {
   try {
-    const response = await fetch("http://localhost:8080/auth/sign-up", {
+    const response = await fetch(serverUrl + "/auth/sign-up", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({username: username.value, password: password.value})

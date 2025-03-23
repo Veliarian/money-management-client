@@ -1,7 +1,8 @@
 import {defineStore} from "pinia";
 import {authService} from "../service/authService.js";
+import serverUrlService from "../service/urlService.js";
 
-const url = "http://localhost:8080/safes";
+const url = serverUrlService.getApplicationServerUrl() + "/safes";
 
 export const useSafeStore = defineStore("safe", {
     state: () => ({
