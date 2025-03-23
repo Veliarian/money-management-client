@@ -8,7 +8,7 @@ defineProps({
 
 <template>
 <div class="transaction-item">
-  <p class="amount">{{amount}}</p>
+  <p class="amount" :class="{red: amount < 0, green: amount > 0}">{{amount}}</p>
   <p>{{description}}</p>
   <p class="time">{{time.trim().replace("T", " ").substring(0, 16)}}</p>
 </div>
@@ -47,6 +47,14 @@ defineProps({
 
 .transaction-item p.amount{
   max-width: 40px;
+}
+
+.transaction-item.red p{
+    color: orangered;
+}
+
+.transaction-item.green p{
+    color: greenyellow;
 }
 
 @media (min-width: 0px) {
